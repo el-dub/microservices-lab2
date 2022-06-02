@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: "postgres://lab2:lab2@postgres:5432/lab2?sslmode=disable"
+    username: "${POSTGRES_USER:postgres}"
+    password: "${POSTGRES_PASSWORD:root}"
+
+server:
+  port: "${SERVER_PORT:8080}"

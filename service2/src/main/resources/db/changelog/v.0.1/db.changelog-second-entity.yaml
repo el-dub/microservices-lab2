@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-second-entity-table
+      author: yelyzaveta_dubohryz
+      changes:
+        - createTable:
+            tableName: second_entity
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(200)
