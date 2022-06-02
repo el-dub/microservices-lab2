@@ -9,6 +9,6 @@ RUN mvn -f /build/pom.xml package
 #
 # Package stage
 #
-FROM openjdk:11-jre-slim
-COPY --from=build /build/target/service2-0.0.1-SNAPSHOT.jar service2.jar
-ENTRYPOINT ["java","-jar", "/service2.jar"]
+FROM openjdk:17-slim
+COPY --from=build /build/target/service2-0.0.1-SNAPSHOT.jar /app/service2.jar
+ENTRYPOINT ["java","-jar", "/app/service2.jar"]
