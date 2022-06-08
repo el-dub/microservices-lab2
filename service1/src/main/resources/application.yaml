@@ -5,7 +5,7 @@ spring:
       ddl-auto: none
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: "jdbc:postgresql://postgres-service:5432/lab2" #something wrong with this url (UnknownHost)
+    url: "jdbc:postgresql://postgres:5432/lab2" #something wrong with this url (UnknownHost)
     username: "${POSTGRES_USER}"
     password: "${POSTGRES_PASSWORD}"
 
