@@ -6,7 +6,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api/service1        # шлях по якому відбувається перенаправлення на сервіс
+          - path: /       # шлях по якому відбувається перенаправлення на сервіс
             pathType: Prefix           # все, що починається з `/api` буде направлено на сервіс demo-service. Альтернативно можна використовувати `Exact` та `ImplementationSpecific`
             backend:
               service:

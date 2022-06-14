@@ -3,11 +3,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: "jdbc:postgresql://postgres:5432/lab2" #something wrong with this url (UnknownHost)
-    username: "${POSTGRES_USER}"
-    password: "${POSTGRES_PASSWORD}"
+    url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/postgres}"
+    username: "${SPRING_DATASOURCE_USERNAME:postgres}"
+    password: "${SPRING_DATASOURCE_PASSWORD:postgres}"
 
 server:
   port: "${SERVER_PORT:8080}"
