@@ -5,6 +5,8 @@ import com.kpi.microservices.service1.model.FirstEntity;
 import com.kpi.microservices.service1.service.FirstEntityService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FirstEntityController {
-
+private static final Logger logger = LoggerFactory.getLogger(FirstEntityController.class);
     private final FirstEntityService firstEntityService;
 
     @GetMapping
     public List<FirstEntity> getAllFirstEntities() {
+        logger.info("Get called");
         return firstEntityService.getAllFirstEntities();
     }
 
