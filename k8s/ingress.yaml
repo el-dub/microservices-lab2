@@ -6,20 +6,20 @@ spec:
   rules:
     - http:
         paths:
-          - path: /       # шлях по якому відбувається перенаправлення на сервіс
-            pathType: Prefix           # все, що починається з `/api` буде направлено на сервіс demo-service. Альтернативно можна використовувати `Exact` та `ImplementationSpecific`
+        #  - path: /       # шлях по якому відбувається перенаправлення на сервіс
+       #     pathType: Prefix           # все, що починається з `/api` буде направлено на сервіс demo-service. Альтернативно можна використовувати `Exact` та `ImplementationSpecific`
+      #      backend:
+      #        service:
+      #          name: service1-service # ім'я сервісу
+      #          port:
+        #          number: 80           # порт на якому запущено сервіс
+          - path: /
+            pathType: Prefix
             backend:
               service:
-                name: service1-service # ім'я сервісу
+                name: kibana
                 port:
-                  number: 80           # порт на якому запущено сервіс
-#          - path: /api/service2
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: service2-service
-#                port:
-#                  number: 80
+                  number: 5601
 #          - path: /
 #            pathType: Prefix
 #            backend:
