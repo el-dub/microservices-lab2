@@ -9,12 +9,17 @@ spec:
       app: service2
   template:
     metadata:
-     labels:
-       app: service2
+      labels:
+        app: service2
     spec:
       containers:
-        - image: service2:0.1
-          imagePullPolicy: Never
-          name: service2
+        - image: service2:0.1 # образ Docker
+          imagePullPolicy: Never   # вказує k8s, що образ не потрібно завантажувати (варто використовувати лише для випадків, коли образи локальні)
+          name: service2           # ім'я контейнеру
           ports:
-            - containerPort: 8080
+            - containerPort: 8081  # порт по якому можна звертатись до поди
+          envFrom:
+            - configMapRef:
+                name: service2-config
+            - secretRef:
+                name: service2-secret

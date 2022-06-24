@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  labels:
+    app: elasticsearch
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: elasticsearch
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+        - name: elasticsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: discovery.type
+              value: single-node
+            - name: ES_JAVA_OPTS
+              value: -Xms512m -Xmx1g
+          ports:
+            - containerPort: 9200
+            - containerPort: 9300
+#          volumeMounts:
+#            - mountPath: /usr/share/elasticsearch/data
+#              name: elasticsearch-volume
+      restartPolicy: Always
+#      volumes:
+#        - name: elasticsearch-volume
+#          persistentVolumeClaim:
+#            claimName: postgres-volume-claim
+#          hostPath:
+#            path: "/Users/elizd/Documents/Projects/elk/elk/es-data"
+
+  selector:
+    matchLabels:
+      app: elasticsearch
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  labels:
+    app: elasticsearch
+spec:
+  selector:
+    app: elasticsearch
+  type: LoadBalancer
+  ports:
+    - port: 9200
+      targetPort: 9200
+      protocol: TCP
+      name: port-9200

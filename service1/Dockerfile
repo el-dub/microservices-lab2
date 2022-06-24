@@ -11,5 +11,4 @@ RUN mvn -f /build/pom.xml package
 #
 FROM openjdk:17-slim
 COPY --from=build /build/target/service1-0.0.1-SNAPSHOT.jar /app/service1.jar
-EXPOSE 8080
 ENTRYPOINT ["java","-jar", "/app/service1.jar"]
